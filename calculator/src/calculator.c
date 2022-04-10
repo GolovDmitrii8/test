@@ -10,7 +10,7 @@
 
 #include <stdio.h>   //Подключение библиотеки ввода-вывода
 #include <math.h>    //Подключение математической библиотеки
-#include <stdlib.h>  //Подключение библиотеки
+#include <stdlib.h>  //Подключение библиотеки для работы с памятью
 
 int main(int argc,char *argv[]) {
 	setvbuf(stdout, NULL, _IONBF, 0);
@@ -72,6 +72,7 @@ int main(int argc,char *argv[]) {
 			break;
     case 'v':                   //Векторный калькулятор
     	float *x,*y;
+    	double res;
     	int size;
     	char c;
     	printf("Список доступных команд:\n");//Список доступных команд
@@ -92,16 +93,16 @@ int main(int argc,char *argv[]) {
     	          {
     	            case '+':                  // Сложение
     	            printf("Сложение векторов: ");
-    	            for(int i=0;i<size;i++) printf("%f ",x[i]+y[i]);
+    	            for(int i=0;i<size;i++) printf("%f \n",x[i]+y[i]);
     	            printf("\n");
     	            break;
     	            case '-':                 // Вычитание
-    	            for(int i=0;i<size;i++) printf("%f ",x[i]-y[i]);
+    	            for(int i=0;i<size;i++) printf("%f \n",x[i]-y[i]);
     	            printf("\n");
     	            break;
     	            case '*':                 // Скалярное произведение
-    	            for(int i=0;i<size;i++) printf("%f ",x[i]*y[i]);
-    	            printf("\n");
+    	            for(int i=0;i<size;i++) res += x[i]*y[i];
+    	            printf("%lf",res);
     	            break;
     	            default:                 // Сообщение о том что нет операции
     	            printf("Такой операции нет введите доступную операцию");
